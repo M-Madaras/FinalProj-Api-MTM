@@ -1,6 +1,12 @@
 {
   "hosting": {
     "public": "public",
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "api"
+      }
+    ],
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -11,6 +17,9 @@
     "hosting": {
       "host": "localhost",
       "port": "5055"
+    },
+    "functions": {
+      "port": 5001
     }
-  }
-}
+
+  }}

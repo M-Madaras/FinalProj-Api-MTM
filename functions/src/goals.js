@@ -1,4 +1,4 @@
-import dbConnect from "./dbconnect.js";
+import dbConnect from "./dbConnect.js";
 
 export async function getGoals(req, res){ // getting the db info
     const db = dbConnect();
@@ -21,7 +21,7 @@ export async function setGoal(req, res) {// set goal function adding new goal
     const db = dbConnect();
     await db.collection('goals').add(newGoal)
     .catch(err => res.status(500).send(err)); // eternal server error
-    res.status(201);// created status code
+    res.status(201).send('ok');// created status code
     getGoals(req, res) // getting back full list of goal
 }
 
