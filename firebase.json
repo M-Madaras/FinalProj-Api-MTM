@@ -17,9 +17,7 @@
     "hosting": {
       "host": "localhost",
       "port": "5055"
-    },
-    "functions": {
-      "port": 5001
     }
+   
 
   }}
