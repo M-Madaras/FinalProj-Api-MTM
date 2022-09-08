@@ -37,7 +37,7 @@ export async function setGoal(req, res) {// set goal function adding new goal
 }
 
 export async function updateGoals(req, res) {
-    const goalUpdate = req.body;
+    let goalUpdate = req.body;
     const { goalId } = req.params;
     res.status(202).send('Goals Updated');
     await db.collection('tasks').doc(goalId).update(goalUpdate)
