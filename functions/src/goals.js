@@ -47,9 +47,14 @@ export async function updateGoals(req, res) {
     getGoals(req, res);
 }
 
-export function deleteGoal(req, res) {
+export async function deleteGoal(req, res) {
     let goalDelete = req.body;
     const { goalId } = req.params;
-    res.status(203).send('Goal Deleted');
+    const db = dbConnect();
+    await db.collection('goals').doc(goalId).delete(goalDelete)
+        .catch(err => res.status(500).send(err));
+    res.status(202)
+
+    getGoals(req, res);
 
 }
