@@ -27,7 +27,7 @@ export async function setGoal(req, res) {// set goal function adding new goal
         res.status(400).send({ success: false, message: 'Invalid request' });
         return;
     }
-    // newTask.userId = user.id;
+    // newGoal.userId = user.id;
     const db = dbConnect();
     await db.collection('goals').add(newGoal)
         .catch(err => res.status(500).send(err)); // eternal server error
@@ -45,16 +45,17 @@ export async function updateGoals(req, res) {
     res.status(202)
 
     getGoals(req, res);
+
 }
 
+
 export async function deleteGoal(req, res) {
-    let goalDelete = req.body;
-    const { goalId } = req.params;
-    const db = dbConnect();
-    await db.collection('goals').doc(goalId).delete(goalDelete)
-        .catch(err => res.status(500).send(err));
-    res.status(202)
+    // let goalDelete = req.body;
+    // const { goalId } = req.params;
+    // const db = dbConnect();
+    // await db.collection('goals').doc(goalId).delete(goalDelete)
+    //     .catch(err => res.status(500).send(err));
+    // res.status(202)
 
     getGoals(req, res);
-
 }
