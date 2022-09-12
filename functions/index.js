@@ -14,7 +14,7 @@ app.use(express.json()); // setting express to .JSON format
 app.get('/goals', getGoals);
 app.post('/goals', setGoal);
 app.patch('/goals/:goalId', updateGoals);
-app.delete('/goals/:goalId', deleteGoal);
+app.delete('/goals/:goalId/delete', deleteGoal);
 
 
 app.post('/users', createUser);
