@@ -7,14 +7,14 @@ import { getGoals, setGoal, updateGoals, deleteGoal}
 
 
 const app = express();// making are app express
-app.use(cors()); // allowing our to use cors
+app.use(cors({ origin: ["https://mtm-goals.web.app", "http://localhost:3000"]})); // allowing our to use cors
 app.use(express.json()); // setting express to .JSON format
 
 // exporting our funtions to utilize firebase and to check with postman
 app.get('/goals', getGoals);
 app.post('/goals', setGoal);
-app.patch('/goals/:goalId', updateGoals);
-app.delete('/goals/:goalId/delete', deleteGoal);
+app.patch('/goals/update/:goalId', updateGoals);
+app.delete('/goals/delete/:goalId', deleteGoal);
 
 
 app.post('/users', createUser);

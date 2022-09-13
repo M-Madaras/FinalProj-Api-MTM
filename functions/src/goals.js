@@ -6,12 +6,11 @@ export async function getGoals(req, res) {
 
     const db = dbConnect();
     const collection = await db.collection('goals')
-
         .get()
         .catch(err => res.status(500).send(err));
     const goals = collection.docs.map(doc => {
         let goal = doc.data();
-        goal.id = goal.id;
+        goal.id = doc.id;
         return goal;
     }
     )
@@ -41,8 +40,7 @@ export async function updateGoals(req, res) {
     const db = dbConnect();
     await db.collection('goals').doc(goalId).update(goalUpdate)
         .catch(err => res.status(500).send(err));
-    res.status(202)
-
+    res.status(202);
     getGoals(req, res);
 }
 
@@ -53,7 +51,6 @@ export async function deleteGoal(req, res) {
     const db = dbConnect();
     await db.collection('goals').doc(goalId).delete()
         .catch(err => res.status(500).send(err));
-    res.status(204)
-
+    // res.status(204);
     getGoals(req, res);
 }
